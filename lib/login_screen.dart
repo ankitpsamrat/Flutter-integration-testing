@@ -63,12 +63,14 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
+              key: const Key('username_controller'),
               controller: _usernameController,
               decoration: const InputDecoration(
                 labelText: 'Username',
               ),
             ),
             TextFormField(
+              key: const Key('password_controller'),
               controller: _passwordController,
               obscureText: true,
               decoration: const InputDecoration(
