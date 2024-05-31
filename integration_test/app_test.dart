@@ -28,6 +28,25 @@ void main() {
           expect(find.byType(HomeScreen), findsOneWidget);
         },
       );
+
+      testWidgets(
+        'verify login screen with incorrect username and password',
+        (tester) async {
+          const usernameKey = Key('username_controller');
+          const passwordKey = Key('password_controller');
+
+          await tester.pumpWidget(const app.MyApp());
+          await tester.pumpAndSettle();
+
+          await tester.enterText(find.byKey(usernameKey), 'username12');
+          await tester.enterText(find.byKey(passwordKey), 'password12');
+
+          await tester.tap(find.byType(ElevatedButton));
+          await tester.pumpAndSettle();
+
+          expect(find.text('Invalid username or password'), findsOneWidget);
+        },
+      );
     },
   );
 }
